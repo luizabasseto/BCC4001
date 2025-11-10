@@ -12,7 +12,25 @@ using namespace std;
 //menor_diferenca(v) = {4, 7}
 //O vetor de entrada não deve ser modificado.
 pair<int,int> menor_diferenca(vector<int> &v){
-
+    std::sort(v.begin(),v.end());
+    int pri = v.at(0);
+    int seg = v.at(1);
+    int dif = pri-seg;
+    pair<int,int> p;
+    for (size_t i = 0; i < v.size()-1; i++)
+    {
+        pri = v.at(i);
+        for (size_t j = 0; j < v.size()-1; j++)
+        {
+            seg = v.at(j);
+            if((pri-seg)<dif){
+                dif= pri-seg;
+                p = {pri,seg};
+            }
+        }
+        
+    }
+    return p;
 }
 
 int main(){

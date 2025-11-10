@@ -9,12 +9,15 @@ using namespace std;
 //e retorna um vetor com as mesmas strings, mas ordenadas por tamanho
 //O vetor de entrada não deve ser modificado.
 vector<string> ordenar_por_tamanho(vector<string> &v){
-    vector<string> s;
+     vector<string> s = v; 
+    sort(s.begin(), s.end(), [](const string &a, const string &b) {
+        return a.size() < b.size();
+    });
 
     return s;
 }
 
-int main(){
+int main(){ 
     vector<string> v = {"gato", "macaco", "galinha", "porco", "cachorro", "pato", "vaca", "cavalo", "ovelha"};
 
     vector<string> res = ordenar_por_tamanho(v);

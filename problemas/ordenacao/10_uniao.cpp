@@ -18,7 +18,31 @@ using namespace std;
 //Exemplo: v1 = {1, 1, 2}, v2 = {1, 2} deve retornar {1, 2}
 
 vector<int> uniao(vector<int> &v1, vector<int> &v2){
+    vector<int> vet1 = v1; 
+    vector<int> vet2 = v2;
+    std::sort(vet1.begin(),vet1.end());
+    std::sort(vet2.begin(),vet2.end());
     vector<int> res;
+    auto it = find(vet1.begin(), vet1.end(), vet1.at(0));
+
+    for (size_t i = 0; i < (vet1.size()-1); i++)
+    {
+        it = find(vet1.begin(), vet1.end(), vet1.at(i));
+        if(it==vet1.end()){
+            res.push_back(vet1.at(i));
+        }
+    }
+    auto aux = find(vet1.begin(), vet1.end(), vet1.at(0));
+
+    for (size_t i = 0; i < vet2.size()-1; i++)
+    {
+        aux = find(vet2.begin(), vet2.end(), vet2.at(i));
+        it = find(res.begin(), res.end(), res.at(i));
+        if(it==res.end() && aux==vet2.end()){
+            res.push_back(vet2.at(i));
+        }
+    }
+    
     return res;
 }
 

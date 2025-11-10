@@ -13,6 +13,13 @@ public:
     // Para que a função sort possa ordenar um vetor de alunos, é necessário
     // sobrecarregar o operador <. Implemente a sobrecarga do operador < para
     // que a função sort possa ordenar um vetor de alunos pelo campo ra.
+    bool operator<(const Aluno& outro) const {
+        // Compara 'este' aluno com 'outro' aluno baseado no ra.
+        return this->ra < outro.ra;
+    }
+    bool operator==(const Aluno& outro) {
+        return this->ra == outro.ra;
+    }
 
     void imprimir(){
         cout << "Nome: " << nome << ", RA: " << ra << endl;
@@ -41,7 +48,7 @@ int main(int argc, char** argv){
         Aluno("Ana", 2199432),
     };
     
-    //Ordenar o vetor de alunos.
+    std::sort(alunos.begin(), alunos.end());
 
 
     for(auto& aluno : alunos){

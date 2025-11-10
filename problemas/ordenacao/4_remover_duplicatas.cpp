@@ -10,6 +10,17 @@
 // os elementos no vetor de saída não precisam preservar a ordem da entrada.
 std::vector<int> remover_duplicatas(std::vector<int> &v){
     std::vector<int> s;
+    std::sort(v.begin(),v.end());
+    for (size_t i = 0; i < v.size(); i++)
+    {
+        if(i!=v.size()-1){
+        if(v[i]!=v[i+1]){
+            s.push_back(v[i]);
+        } else{
+            i++;
+        }
+    }
+    }
     
     return s;
 }

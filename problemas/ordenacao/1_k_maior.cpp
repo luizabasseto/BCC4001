@@ -7,6 +7,7 @@
 
 #define DEBUG 1
 
+using namespace std;
 // retorna o k-ésimo maior elemento do vetor.
 // Os elementos de v podem ser permutados durante a execução.
 // pré-condição: o vetor não possui elementos repetidos
@@ -15,6 +16,14 @@
 // k=....
 // k=n retorna o menor elemento
 int k_maior(std::vector<int> &v, int k){
+    std:sort(v.begin(),v.end());
+    int j=1;
+    for(int i = v.size()-1; i>=0; i--){
+        if(k==j){
+            return v[i];
+        }
+        j++;
+    }
     return 0;
 }
 

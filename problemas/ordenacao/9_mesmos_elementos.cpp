@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <tuple>
 
 using namespace std;
 
@@ -16,7 +17,20 @@ using namespace std;
 //Exemplo: v1 = {1, 1, 2, 2} , v2 = {1, 2} deve retornar false
 
 bool mesmos_elementos(vector<int> v1, vector<int> v2) {
-    return false;
+    if(v1.size()!=v2.size()){
+        return false;
+    }
+    std::sort(v1.begin(),v1.end());
+    std::sort(v2.begin(),v2.end());
+
+    for (size_t i = 0; i < v1.size()-1; i++)
+    {
+        if(v1.at(i)!=v2.at(i)){
+            return false;
+        }
+    }
+    
+    return true;
 }
 
 int main(){
